@@ -1,0 +1,328 @@
+html,
+body {
+    height: 100%;
+}
+
+input, span, select, textarea {border-radius: 0px !important;}
+.wrap {
+    min-height: 100%;
+    height: auto;
+    margin: 0 auto -60px;
+    padding: 0 0 60px;
+}
+
+.wrap > .container {
+    padding: 70px 15px 20px;
+}
+.wrap > .home {
+    padding: 35px 15px 20px;
+}
+
+.footer {
+    height: 60px;
+    background-color: #2e3740;
+    border-top: 1px solid #ddd;
+    padding-top: 20px;
+    color: #fff;
+}
+
+.jumbotron {
+    text-align: center;
+    background-color: transparent;
+}
+
+.jumbotron .btn {
+    font-size: 21px;
+    padding: 14px 24px;
+}
+
+:before {margin-right: 3px;}
+
+.not-set {
+    color: #c55;
+    font-style: italic;
+}
+
+/* add sorting icons to gridview sort links */
+a.asc:after, a.desc:after {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    padding-left: 5px;
+}
+
+a.asc:after {
+    content: "\e151";
+}
+
+a.desc:after {
+    content: "\e152";
+}
+
+.btn {border-radius: 0}
+
+.sort-numerical a.asc:after {
+    content: "\e153";
+}
+
+.sort-numerical a.desc:after {
+    content: "\e154";
+}
+
+.sort-ordinal a.asc:after {
+    content: "\e155";
+}
+
+.sort-ordinal a.desc:after {
+    content: "\e156";
+}
+
+.grid-view td {
+    white-space: nowrap;
+}
+
+.grid-view .filters input,
+.grid-view .filters select {
+    min-width: 50px;
+}
+
+.hint-block {
+    display: block;
+    margin-top: 5px;
+    color: #999;
+}
+
+.error-summary {
+    color: #a94442;
+    background: #fdf7f7;
+    border-left: 3px solid #eed3d7;
+    padding: 10px 20px;
+    margin: 0 0 15px 0;
+}
+
+/* align the logout "link" (button in form) of the navbar */
+.navbar {border-top: 4px solid #dd3333;}
+.nav li > form > button.logout {
+    padding: 15px;
+    border: none;
+}
+.breadcrumb {border-radius: 0 ;}
+
+.navbar-inverse {background-color: #1e2d5a}
+.navbar-inverse .navbar-nav > li > a {color: #ffffff;}
+
+@media(max-width:767px) {
+    .nav li > form > button.logout {
+        display:block;
+        text-align: left;
+        width: 100%;
+        padding: 10px 15px;
+    }
+}
+
+.nav > li > form > button.logout:focus,
+.nav > li > form > button.logout:hover {
+    text-decoration: none;
+}
+
+.nav > li > form > button.logout:focus {
+    outline: none;
+}
+
+.head {
+    background: url("../uploads/image/head.jpg");
+    height: 620px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+ul {list-style: none;}
+
+#thumbnail {
+    width: 180px;
+    display: block;
+    margin: 0 auto;
+}
+#thumbnail img{
+    max-width: 100%;
+}
+
+#thumbnail_request img{
+    max-width: 100%;
+}
+
+#request-edit_thumbnail {width: 290px;}
+#request-edit_thumbnail img {max-width: 100%;}
+                                                /* СТИЛИ */
+/* СТИЛИ КОЛОНОК И СТРОК */
+.col-price{text-align: right}
+.col-adres {text-align: right;}
+.col-title a {font-size: 2.2rem;}
+.col-title a:visited {color: #1a60ba}
+.col-title a:hover {text-decoration: none; color: #e34065;}
+.col-item-list{box-shadow: -3px 5px 12px 0px #e4e4e4;}
+.row-search {padding-bottom: 15px;}
+
+/* СТИЛИ МЕТОК */
+.label-price {font-size: 1.6rem; height: 34px; font-weight: 800;}
+.label-adres:before {content: "\f041"; margin-right: 3px; font-family: FontAwesome}
+.label-date-after:before {content: "\f017"; font-family: FontAwesome}
+.label-publish:before{content: "\f073"; font-family: FontAwesome}
+.label-date-after-item {font-size: 16px; font-weight: 600; color: #5d5d5d;}
+.label-publish-item {font-size: 14px; color: #999;}
+.label-category:before {content: "\f0b1"; font-family: FontAwesome}
+.label-status {color: #00aa00;}
+.label-edit:before{content: "\f040"; margin-right: 3px; font-family: FontAwesome; color: #337ab7;}
+.label-time-left:before{content: "\f017"; font-family: FontAwesome;}
+.label-separator:before {content: '●'; color: #4FB04F;}
+.label-phone:before {content: "\f095"; font-family: FontAwesome;}
+.label-email:before {content: "\f003"; font-family: FontAwesome;}
+.label-user:before {content: "\f007"; font-family: FontAwesome;}
+.label-unpublish:before {content: "\f00d"; font-family: FontAwesome; color: #d9534f; margin-right: 3px;}
+.label-inpublish:before {content: "\f00c"; font-family: FontAwesome; color: #5cb85c; margin-right: 3px;}
+.label-finish:before {content: "\f11e"; font-family: FontAwesome; color: #5cb85c; margin-right: 3px;}
+.label-close:before {content: "\f023"; font-family: FontAwesome; color: #f0ad4e; margin-right: 5px; font-size: 16px;}
+.label-expired:before {content: "\f273"; font-family: FontAwesome;}
+.label-check:before {content: "\f00c"; font-family: FontAwesome;}
+.label-like:after {content: "\f087"; font-family: FontAwesome; padding-left: 3px; color: #00aa00;}
+.label-nolike:after {content: "\f088"; font-family: FontAwesome;  padding-left: 3px; color:red;}
+.label-message-mail:before {content: "\f003"; font-family: FontAwesome;font-size: 20px; cursor: pointer ;color: #00aa00;}
+.label-message-mail:hover {text-decoration: none !important;}
+.label_add:before {content: "\f196"; font-family: FontAwesome; cursor: pointer;}
+.label-delete:before {content: "\f00d"; font-family: FontAwesome; font-size: 23px; color: #a94442;}
+
+.status-selected {color: #d58512}
+.status-close {color: #d43f3a}
+.status-active {color: #398439}
+.status-finish {color: #285e8e}
+
+.b-badges__completed {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px;
+    width: 62px;
+    height: 73px;
+    background: url(../uploads/image/sprite-big-badge.png) 0 -66px no-repeat;
+    line-height: 73px;
+    letter-spacing: -1px;
+    text-align: center;
+    text-shadow: 0 1px 1px rgba(55, 150, 235, .5);
+    color: #fff;
+}
+
+.b-badges__top {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    width: 65px;
+    height: 66px;
+    background: url(../uploads/image/sprite-big-badge.png) -65px -139px no-repeat;
+    line-height: 70px;
+    text-align: center;
+    letter-spacing: -1px;
+    color: #fff;
+}
+
+.file-upload {
+    position: relative; /* Даем возможность делать позиционирование, внутри данного элемента */
+    overflow: hidden; /* Все что выходит за пределы - скрываем */
+    width: 150px; /* Задаем ширину кнопки выбора файла */
+    height: 35px; /* Задаем высоту кнопки выбора файла */
+    background: #337ab7;
+    padding: 8px 4px;
+    color: #fff;
+    text-align: center;
+}
+.file-upload:hover {
+    background: #2e6da4;
+}
+.file-upload input[type="file"]{
+    display: none; /* Обязательно скрываем настоящий Input File */
+}
+.file-upload label {
+    /* Растягиваем label на всю возможную площадь блока .file-upload */
+    display: block;
+    position: absolute;
+    top: 25%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+.file-upload span {
+    line-height: 36px; /* Делаем вертикальное выравнивание текста, который написан на кнопке */
+}
+.file-upload .has-success .control-label {color: #fff900 !important;}
+
+/* ГЛАВНАЯ СТРАНИЦА */
+
+.home-page_category{
+    columns: 3;
+    color: #000;
+}
+
+/* РАЗДЕЛ УСЛУГИ */
+.request-view-data-row {padding-top: 30px;}
+.request-view-detail span{color: #777;}
+.request-view-detail {}
+.request-view-title-row{border-bottom: 1px solid gainsboro;}
+.complain:before {content: "\f0e7"; font-size: 14px; font-family: FontAwesome}
+.request-view-control-row {border-top: 1px solid gainsboro; padding: 10px;}
+.return:before {content: "\f112"; font-family: FontAwesome;}
+.request-list_category {list-style: none; padding-left: 10px;}
+.request-list_city {list-style: none; padding-left: 10px;}
+.request-all-category-btn {border-bottom: 1px dotted grey;}
+#time-left span {font-weight: bold; font-size: 16px;}
+.request-list_task-list {list-style: none; padding-left: 0}
+.request-list_task {border: 1px solid #ececec; padding: 10px 10px 20px 10px;}
+.request_view-candidate_list li {border-bottom: 1px solid #d2d2d2; padding: 5px;}
+.request-complete {background: url(../uploads/image/request-coplete.png); background-size: contain; background-repeat: no-repeat;}
+
+.request-list_task a {color: #222222;}
+.request-list_category a {color: #1e2d5a;}
+.request-list_city a {color: #1e2d5a;}
+
+/* ФИЛЬТР УСЛУГ */
+
+/* СТИЛИ КАРТЫ */
+.request-view_map #w0 {height: 225px !important;}
+.request-view_map {padding-bottom: 20px;}
+.request-list_map{padding-bottom: 20px;}
+.request-list_map #w0 {height: 300px !important;}
+
+/* РАЗДЕЛ ТОВАР */
+.request-product_list>li{border: 1px solid #e2e2e2; padding: 10px 10px 10px 10px;}
+.request-product-view_detail span {font-weight: bold;}
+.request-product_list {padding-left: 0;}
+.request-product_list {list-style: none;}
+
+/* РАЗДЕЛ РАБОТА */
+.request_view-candidate_list {list-style: none;}
+.request-work_row-detail {padding-top: 25px;}
+
+/*АККАУНТ*/
+#account-my_list {padding-top: 15px;}
+#account-my_list li{padding-bottom: 5px;}
+#account-my_list a {width: 100%; text-align: left;}
+#account-my_list ul {list-style: none;}
+#user-user-info_review {list-style: none;}
+#user-user-info_review li {padding-bottom: 20px;}
+#user-user-info_review a{color: #999; text-decoration: underline}
+#user-user-info_review a:hover{color: #337ab7;}
+.user_review {background-color: #f9f6ef; padding: 15px; border-radius: 5px; margin-left: 15px;}
+.user_review-title {border-bottom: 1px solid #d8d8d8; padding-bottom: 10px;}
+.user_review-text {padding-top: 10px}
+
+
+.blur{ /*РАЗМЫТИЕ*/
+    -webkit-filter: blur(5px);
+    -moz-filter: blur(5px);
+    -o-filter: blur(5px);
+    -ms-filter: blur(5px);
+    filter: blur(5px);
+}
