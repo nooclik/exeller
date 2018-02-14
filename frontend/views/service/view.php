@@ -87,21 +87,22 @@ $this->params['breadcrumbs'][] = $this->title;
                 <p class="label-status"><?= $data->status; ?></p>
             <?php endif; ?>
 
-
-            <?php if ($data->user_id == Yii::$app->user->identity->id): ?> <!-- ЕСЛИ ВЛАДЕЛЕЦ -->
-                <?php if ($data->status == Request::STATUS_SELECTED) : ?>
-                    <p class="label-finish"><?= Html::a('Выполнено', ['close', 'request_id' => $data->id]) ?></p>
-                    <p class="label-inpublish"><?= Html::a('Открыть', ['view', 'action' => 'publish', 'id' => $data->id]) ?></p>
-                    <p class="label-edit"><?= Html::a('Редактировать', ['update', 'id' => $data->id]) ?></p>
-                <?php endif; ?>
-                <?php if ($data->status == Request::STATUS_CLOSE) : ?>
-                    <p class="label-inpublish"><?= Html::a('Открыть', ['view', 'action' => 'publish', 'id' => $data->id]) ?></p>
-                    <p class="label-edit"><?= Html::a('Редактировать', ['update', 'id' => $data->id]) ?></p>
-                <?php endif; ?>
-                <?php if ($data->status == Request::STATUS_ACTIVE): ?>
-                    <p class="label-close"><?= Html::a('Закрыть', ['view', 'action' => 'close', 'id' => $data->id]) ?></p>
-                    <p class="label-unpublish"> <?= Html::a('Снять с публикации', ['view', 'action' => 'unpublish', 'id' => $data->id]) ?></p>
-                    <p class="label-edit"><?= Html::a('Редактировать', ['update', 'id' => $data->id]) ?></p>
+            <?php if (!Yii::$app->user->isGuest) : ?>
+                <?php if ($data->user_id == Yii::$app->user->identity->id): ?> <!-- ЕСЛИ ВЛАДЕЛЕЦ -->
+                    <?php if ($data->status == Request::STATUS_SELECTED) : ?>
+                        <p class="label-finish"><?= Html::a('Выполнено', ['close', 'request_id' => $data->id]) ?></p>
+                        <p class="label-inpublish"><?= Html::a('Открыть', ['view', 'action' => 'publish', 'id' => $data->id]) ?></p>
+                        <p class="label-edit"><?= Html::a('Редактировать', ['update', 'id' => $data->id]) ?></p>
+                    <?php endif; ?>
+                    <?php if ($data->status == Request::STATUS_CLOSE) : ?>
+                        <p class="label-inpublish"><?= Html::a('Открыть', ['view', 'action' => 'publish', 'id' => $data->id]) ?></p>
+                        <p class="label-edit"><?= Html::a('Редактировать', ['update', 'id' => $data->id]) ?></p>
+                    <?php endif; ?>
+                    <?php if ($data->status == Request::STATUS_ACTIVE): ?>
+                        <p class="label-close"><?= Html::a('Закрыть', ['view', 'action' => 'close', 'id' => $data->id]) ?></p>
+                        <p class="label-unpublish"> <?= Html::a('Снять с публикации', ['view', 'action' => 'unpublish', 'id' => $data->id]) ?></p>
+                        <p class="label-edit"><?= Html::a('Редактировать', ['update', 'id' => $data->id]) ?></p>
+                    <?php endif; ?>
                 <?php endif; ?>
             <?php endif; ?>
             <p><span id="time-left"></span></p>
@@ -164,7 +165,8 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
     <?php
     $date_left = explode('-', $data['date_to_date_after']);
-    $time_left = explode('-', $data['date_to_time_after']);
+    $time_left = explode(':', $data['date_to_time_after']);
+    //print_r($time_left); exit();
     ?>
     <script type="text/javascript">
         timeend = new Date();
