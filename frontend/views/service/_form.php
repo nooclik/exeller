@@ -116,4 +116,17 @@ use kartik\time\TimePicker;
         </div>
         <?php ActiveForm::end(); ?>
     </div>
+
+
+
+    <div class="dop">
+
+        <?php $form2 = ActiveForm::begin()?>
+            <?php foreach ($dModel as $key) : ?>
+
+            <?php endforeach; ?>
+        <?php ActiveForm::end(); ?>
+    </div>
+
+
 </div>

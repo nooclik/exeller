@@ -20,6 +20,7 @@ use common\models\Directory;
 use yii\web\UploadedFile;
 use dosamigos\transliterator\TransliteratorHelper;
 use frontend\models\RequestSearch;
+use yii\base\DynamicModel;
 
 class ServiceController extends Controller
 {
@@ -76,6 +77,15 @@ class ServiceController extends Controller
         $model->date_to_time_after = 0;
 
 
+        $dData = [
+            'a' => 'l-a',
+            'b' => 'l-b',
+            'c' => 'l-c',
+        ];
+
+        $attributes = implode(', ', array_keys($dData));
+        $dModel = new DynamicModel(compact($attributes));
+
         if ($model->load(\Yii::$app->request->post()) && $model->validate()) {
             $model->date_to_date_before = date('Y-m-d', strtotime($model->date_to_date_before));
             $model->thumnail = UploadedFile::getInstance($model, 'thumnail');
@@ -88,7 +98,7 @@ class ServiceController extends Controller
             $this->redirect(['create', 'id' => $model->id]);
         }
 
-        return $this->render('create', compact('model', 'payment', 'category', 'city', 'personal', 'my_city'));
+        return $this->render('create', compact('model','dModel', 'payment', 'category', 'city', 'personal', 'my_city'));
     }
 
     public function actionView()

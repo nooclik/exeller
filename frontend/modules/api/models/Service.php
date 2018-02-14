@@ -62,7 +62,7 @@ class Service extends ActiveRecord
         return [
             'id',
             'title' => 'short_description',
-            'category' => categoryName,
+            'category' => 'categoryName',
             'status',
             'price',
             'city',

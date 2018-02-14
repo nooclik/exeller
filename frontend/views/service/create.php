@@ -12,5 +12,5 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <?=
-    $this->render('_form', compact('model', 'payment', 'category', 'city', 'personal'))
+    $this->render('_form', compact('model', 'dModel' ,'payment', 'category', 'city', 'personal'))
 ?>
