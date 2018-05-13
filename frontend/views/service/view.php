@@ -117,20 +117,22 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="row request-view-control-row">
         <?= Html::a('К заявкам', ['service/index'], ['class' => 'btn btn-info return']) ?>
-        <?php if ($data->status == Request::STATUS_ACTIVE && !Request::isContractor(Yii::$app->user->identity->id, $data->id) && !Request::isCustomer(Yii::$app->user->identity->id, $data->id)) : ?>
-            <?php
-            Modal::begin([
-                'toggleButton' => [
-                    'label' => 'Отозваться',
-                    'class' => 'btn btn-success'
-                ]
-            ]);
-            $form = ActiveForm::begin();
-            echo $form->field($deal, 'message')->textarea(['rows' => '6', 'placeholder' => 'Введите текст Вашего предложения...']);
-            echo Html::submitButton('Отправить', ['class' => 'btn btn-success']);
-            ActiveForm::end();
-            Modal::end();
-            ?>
+        <?php if (!Yii::$app->user->isGuest) : ?>
+            <?php if ($data->status == Request::STATUS_ACTIVE && !Request::isContractor(Yii::$app->user->identity->id, $data->id) && !Request::isCustomer(Yii::$app->user->identity->id, $data->id)) : ?>
+                <?php
+                Modal::begin([
+                    'toggleButton' => [
+                        'label' => 'Отозваться',
+                        'class' => 'btn btn-success'
+                    ]
+                ]);
+                $form = ActiveForm::begin();
+                echo $form->field($deal, 'message')->textarea(['rows' => '6', 'placeholder' => 'Введите текст Вашего предложения...']);
+                echo Html::submitButton('Отправить', ['class' => 'btn btn-success']);
+                ActiveForm::end();
+                Modal::end();
+                ?>
+            <?php endif; ?>
         <?php endif; ?>
         <?= Html::a('Пожаловаться', ['site/complaint', 'post_id' => $data->id], ['class' => 'btn btn-danger complain']) ?>
     </div>
@@ -145,8 +147,10 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <?= Html::a(\common\models\User::findOne($candidate['contractor_id'])->nicename, ['user/user-info', 'user_id' => $candidate['contractor_id']]) ?>
                             </div>
                             <div class="col-md-6">
-                                <?php if ($data->status !== Request::STATUS_SELECTED && $data->status !== Request::STATUS_CLOSE && $data->status !== Request::STATUS_DONE && Yii::$app->user->identity->id == $data->user_id) : ?>
-                                    <?= Html::a('<span class="label-check"></span>Выбрать исполнителем', ['contractor' => $candidate['contractor_id'], 'id' => $data['id']], ['class' => 'btn btn-primary']) ?>
+                                <?php if (!Yii::$app->user->isGuest) : ?>
+                                    <?php if ($data->status !== Request::STATUS_SELECTED && $data->status !== Request::STATUS_CLOSE && $data->status !== Request::STATUS_DONE && Yii::$app->user->identity->id == $data->user_id) : ?>
+                                        <?= Html::a('<span class="label-check"></span>Выбрать исполнителем', ['contractor' => $candidate['contractor_id'], 'id' => $data['id']], ['class' => 'btn btn-primary']) ?>
+                                    <?php endif; ?>
                                 <?php endif; ?>
                             </div>
                         </div>
@@ -164,14 +168,18 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
     <?php
-    $date_left = explode('-', $data['date_to_date_after']);
-    $time_left = explode(':', $data['date_to_time_after']);
-    //print_r($time_left); exit();
+    if (!empty($data['date_to_date_after'])) list ($year, $month, $day) = explode('-', $data['date_to_date_after']);
+    if (!empty($data['date_to_time_after'])) list ($hour, $minute, $second) = explode(':', $data['date_to_time_after']);
     ?>
-    <script type="text/javascript">
-        timeend = new Date();
+
+    <?php if (date('Y-m-d') < $data['date_to_date_after'] && $data->status == Request::STATUS_ACTIVE): ?>
+    <body onload="time()">
+    <?php endif;
+    if (isset($day) && isset($hour)) {
+        $this->registerJS ("
+            timeend = new Date();
         // IE и FF по разному отрабатывают getYear()
-        timeend = new Date(<?= $date_left[0] ?>, <?= $date_left[1] ?> -1, <?= $date_left[2] ?>,  <?= $time_left[0] ?> -1,  <?= $time_left[1] ?>);
+        timeend = new Date(<?= $year ?>, <?= $month ?> -1, <?= $day ?>,  <?= $hour ?> -1,  <?= $minute ?>);
         // для задания обратного отсчета до определенной даты укажите дату в формате:
         // timeend= new Date(ГОД, МЕСЯЦ-1, ДЕНЬ);
         // Для задания даты с точностью до времени укажите дату в формате:
@@ -187,17 +195,16 @@ $this->params['breadcrumbs'][] = $this->title;
             if (tmin < 10) tmin = '0' + tmin;
             thour = today % 24;
             today = Math.floor(today / 24);
-            //timestr = "<span>" + today + "</span> д. <span>" + thour + "</span> ч. <span>" + tmin + "</span> мин. <span>" + tsec + "</span> сек.";
-            timestr = "<span class=\'label-time-left\'>" + today + "</span> д. <span>" + thour + "</span> ч. <span>" + tmin + "</span> мин.";
+            //timestr = \"<span>\" + today + \"</span> д. <span>\" + thour + \"</span> ч. <span>\" + tmin + \"</span> мин. <span>\" + tsec + \"</span> сек.\";
+            timestr = \"<span class=\'label-time-left\'>\" + today + \"</span> д. <span>\" + thour + \"</span> ч. <span>\" + tmin + \"</span> мин.\";
 
             document.getElementById('time-left').innerHTML = timestr;
 
-            window.setTimeout("time()", 1000);
+            window.setTimeout(\"time()\", 1000);
         }
-    </script>
-    <?php if (date('Y-m-d') < $data['date_to_date_after'] && $data->status == Request::STATUS_ACTIVE): ?>
-    <body onload="time()">
-    <?php endif; ?>
+        ");
+    }
+
 
 
 

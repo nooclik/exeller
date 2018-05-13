@@ -114,6 +114,9 @@ use kartik\time\TimePicker;
                 <?= Html::a('Отмена', Yii::$app->request->referrer, ['data-confirm' => 'Вы уверены?', 'class' => 'btn btn-info', 'data-toggle' => 'tooltip', 'title' => 'dsds', 'data-placement' => 'right', 'style' => 'width: 100%;']); ?>
             </div>
         </div>
+
+        <?= $form->field($dModel, 'name1') ?>
+
         <?php ActiveForm::end(); ?>
     </div>
 

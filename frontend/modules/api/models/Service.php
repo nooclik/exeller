@@ -53,7 +53,6 @@ class Service extends ActiveRecord
             [['price'], 'number'],
             [['status'], 'string', 'max' => 25],
             [['short_description', 'customer_info', 'address', 'attachment'], 'string', 'max' => 255],
-            [['thumnail'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg'],
         ];
     }
 
@@ -62,10 +61,10 @@ class Service extends ActiveRecord
         return [
             'id',
             'title' => 'short_description',
-            'category' => 'categoryName',
-            'status',
+            //'category' => 'categoryName',
+            //'status',
             'price',
-            'city',
+            //'city',
         ];
     }
 

@@ -9,6 +9,7 @@
 namespace frontend\controllers;
 
 use common\models\User;
+use frontend\models\Dynamic;
 use Yii;
 use common\models\Request;
 use common\models\Payment;
@@ -77,14 +78,8 @@ class ServiceController extends Controller
         $model->date_to_time_after = 0;
 
 
-        $dData = [
-            'a' => 'l-a',
-            'b' => 'l-b',
-            'c' => 'l-c',
-        ];
-
-        $attributes = implode(', ', array_keys($dData));
-        $dModel = new DynamicModel(compact($attributes));
+        $dModel = new Dynamic();
+        $dModel->loadAtr(1);
 
         if ($model->load(\Yii::$app->request->post()) && $model->validate()) {
             $model->date_to_date_before = date('Y-m-d', strtotime($model->date_to_date_before));

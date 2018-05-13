@@ -85,6 +85,7 @@ class SectionServiceController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            //print_r($model->attr_name);
             return $this->redirect(['index']);
         } else {
             return $this->render('update', [

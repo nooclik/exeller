@@ -17,6 +17,11 @@ class SectionService extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+
+    public $attr_name;
+    public $attr_type;
+    public $attr_label;
+
     public static function tableName()
     {
         return 'section_service';
@@ -30,12 +35,10 @@ class SectionService extends \yii\db\ActiveRecord
         return [
             [['disabled'], 'integer'],
             [['name', 'thumbnail'], 'string', 'max' => 50],
+            [['attr_name', 'attr_type', 'attr_label'], 'safe'],
         ];
     }
-
-    /**
-     * @inheritdoc
-     */
+    
     public function attributeLabels()
     {
         return [

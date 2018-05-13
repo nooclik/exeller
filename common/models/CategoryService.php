@@ -30,6 +30,7 @@ class CategoryService extends \yii\db\ActiveRecord
         return [
             [['id', 'section_id', 'disabled'], 'integer'],
             [['name'], 'string', 'max' => 50],
+            [['fields'], 'string'],
         ];
     }
 
