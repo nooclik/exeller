@@ -153,6 +153,7 @@ class ServiceController extends Controller
         $model = Request::findOne(Yii::$app->request->get('id'));
         $payment = ArrayHelper::map(Payment::find()->all(), 'id', 'name');
         $category = Directory::GetServiceCategory();
+        $personal = unserialize(User::findOne(Yii::$app->user->id)->personal_data);
         $city = Directory::GetCity();
         if ($model->date_to_date_before) $model->date_to_date_before = date('d.m.Y', strtotime($model->date_to_date_before));
         //if ($model->date_to_date_after) $model->date_to_date_after = date('d.m.Y', strtotime($model->date_to_date_after));
@@ -169,7 +170,7 @@ class ServiceController extends Controller
             }
             $this->redirect(['view', 'id' => $model->id]);
         }
-        return $this->render('update', compact('model', 'payment', 'category', 'city'));
+        return $this->render('update', compact('model', 'payment', 'category', 'city', 'personal'));
     }
 
     public function actionDelete()

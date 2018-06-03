@@ -115,8 +115,6 @@ use kartik\time\TimePicker;
             </div>
         </div>
 
-        <?= $form->field($dModel, 'name1') ?>
-
         <?php ActiveForm::end(); ?>
     </div>
 
@@ -124,11 +122,11 @@ use kartik\time\TimePicker;
 
     <div class="dop">
 
-        <?php $form2 = ActiveForm::begin()?>
+        <?php /* $form2 = ActiveForm::begin()?>
             <?php foreach ($dModel as $key) : ?>
 
             <?php endforeach; ?>
-        <?php ActiveForm::end(); ?>
+        <?php ActiveForm::end(); */ ?>
     </div>
 
 

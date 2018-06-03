@@ -5,6 +5,7 @@ namespace frontend\modules\api\models;
 use frontend\modules\api\models\ServiceCategory;
 use common\models\User;
 use yii\db\ActiveRecord;
+use yii\helpers\Url;
 
 /**
  * This is the model class for table "request".
@@ -63,6 +64,7 @@ class Service extends ActiveRecord
             'title' => 'short_description',
             //'category' => 'categoryName',
             //'status',
+            'attachment' => 'attachmentPath',
             'price',
             //'city',
         ];
@@ -76,6 +78,11 @@ class Service extends ActiveRecord
     public function getUser()
     {
         return $this->hasOne(User::className(), ['id' => 'user_id']);
+    }
+
+    public function getAttachmentPath()
+    {
+        return $this->attachment;
     }
 
     public function getCategoryName()

@@ -20,5 +20,5 @@ $params = ['prompt' => 'Выберите категорию...', 'class' => 'inp
 
 
 <?=
-    $this->render('_form', compact('model', 'payment', 'category', 'city'))
+    $this->render('_form', compact('model', 'payment', 'category', 'city', 'personal'));
 ?>
